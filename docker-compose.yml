@@ -8,6 +8,7 @@ services:
       - MYSQL_DATABASE=expenses_tracker 
       - MYSQL_ROOT_PASSWORD=springstudent 
       - MYSQL_USER=springstudent
+      - MYSQL_BIND_ADDRESS=0.0.0.0
     ports:
       - 3306:3306
     networks:
