@@ -1,11 +1,6 @@
 @Library('Shared')_
 pipeline{
     agent {label 'worker-node'}
-    environment {
-        MYSQL_CONTAINER_NAME = 'mysql_cont'
-        MYSQL_PASSWORD = 'springstudent'
-    }
-    
     stages{
         stage("Code pull"){
             steps{
@@ -32,14 +27,6 @@ pipeline{
         stage("Code Deploy"){
             steps{
               deploy()
-            }
-        }
-        stage("Running imp command in SQL"){
-            steps{
-                script{
-                    sh "docker-compose exec mysql_cont mysql -u root -p${MYSQL_PASSWORD} -e 'CREATE USER IF NOT EXISTS 'springstudent' IDENTIFIED BY 'springstudent';'"
-                    sh "docker-compose exec mysql_cont mysql -u root -p${MYSQL_PASSWORD} -e 'GRANT ALL PRIVILEGES ON expenses_tracker.* TO 'springstudent';'"
-                }
             }
         }
     }
