@@ -29,5 +29,15 @@ pipeline{
               deploy()
             }
         }
+        stage('Run MySQL Command') {
+            steps {
+                script {
+                    sh """
+                        docker-compose exec mysql mysql -u root -p sprintstudent -e "CREATE USER IF NOT EXISTS 'springstudent'@'%' IDENTIFIED BY 'springstudent'
+                        and GRANT ALL PRIVILEGES ON expenses_tracker.* TO 'springstudent'@'%';"
+                    """
+                }
+            }
+        }
     }
 }
