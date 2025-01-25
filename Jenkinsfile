@@ -33,8 +33,8 @@ pipeline{
             steps {
                 script {
                     sh """
-                        docker-compose exec mysql mysql -u root --password=sprintstudent -e "CREATE USER IF NOT EXISTS 'springstudent'@'%' IDENTIFIED BY 'springstudent'
-                        and GRANT ALL PRIVILEGES ON expenses_tracker.* TO 'springstudent'@'%';"
+                        docker-compose exec mysql mysql -u root --password=sprintstudent -e "CREATE USER IF NOT EXISTS 'springstudent'@'%' IDENTIFIED BY 'springstudent';
+                        GRANT ALL PRIVILEGES ON expenses_tracker.* TO 'springstudent'@'%';"
                     """
                 }
             }
