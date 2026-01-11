@@ -1,66 +1,246 @@
-![Language](https://img.shields.io/badge/language-Java%20-blue.svg)
-![Technologies](https://img.shields.io/badge/technologies-Spring_boot%20-green.svg)
-![Technologies](https://img.shields.io/badge/technologies-Spring_MVC%20-green.svg)
-![Technologies](https://img.shields.io/badge/technologies-Spring_Security%20-green.svg)
-![Technologies](https://img.shields.io/badge/technologies-Spring_Data_jpa%20-green.svg)
-![Technologies](https://img.shields.io/badge/technologies-Thymeleaf_&_Bootstrap%20-purple.svg)
+# Expenses Tracker Web Application – DevOps Enabled
 
-# Expenses-Tracker-WebApp
-## Overview
-The Expenses Tracker App is a robust financial management solution developed using cutting-edge technologies such as Spring Boot, Spring Security, and MySQL. With user authentication and authorization features, users can securely sign up, sign in, and perform CRUD operations on their expenses. The app's intuitive interface, powered by Thymeleaf and Bootstrap, ensures a seamless user experience. The filtering functionality allows users to efficiently organize and analyze their financial data. Explore the power of streamlined expense tracking and financial control with this feature-rich application.<br> (Screenshots below for more illustration)
+This repository is a **forked and DevOps-enhanced version** of the original **Expenses Tracker Web Application** built using **Spring Boot**.
 
-## Technologies Used
+👉 **Original Repository:**  
+https://github.com/mohamed0sawy/Expenses-Tracker-WebApp
+
+My contribution focuses on **DevOps practices**, including **Dockerization, Docker Compose orchestration, and CI/CD automation**, making the application production-ready and easier to deploy.
+
+---
+
+## 📌 Table of Contents
+- Project Overview
+- Original vs Forked Repository
+- Architecture
+- Tech Stack
+- DevOps Enhancements
+- Project Structure
+- Prerequisites
+- Setup & Run (Docker)
+- Docker Compose
+- CI/CD Pipeline
+- Environment Variables
+- Build & Deployment Flow
+- Cleanup
+- Best Practices
+- License & Credits
+
+---
+
+## 📖 Project Overview
+
+The Expenses Tracker Web Application helps users:
+- Track daily expenses
+- Categorize spending
+- View summaries via a web interface
+
+The **core application** was developed using **Spring Boot + MySQL + Thymeleaf**.  
+This fork focuses on **DevOps automation and deployment improvements**.
+
+---
+
+## 🔁 Original vs Forked Repository
+
+### Original Repo (Application Focus)
+- Spring Boot backend
+- Spring MVC + Thymeleaf frontend
+- Spring Security
+- MySQL database
+- Monolithic setup
+- Manual run (local IDE / Maven)
+
+### This Fork (DevOps Focus)
+✅ Dockerized application  
+✅ Docker Compose for multi-container orchestration  
+✅ CI/CD pipeline for automated builds  
+✅ Environment-based configuration  
+✅ Production-style deployment workflow  
+
+---
+
+## 🧱 Architecture
+
+```
++-------------------+       +------------------+
+| Spring Boot App   | ----> | MySQL Database   |
+| (Docker)          |       | (Docker)         |
++-------------------+       +------------------+
+        |
+        |
+   CI/CD Pipeline
+ (Automated Build)
+```
+
+---
+
+## 🛠 Tech Stack
+
+### Application
 - Java
-- Spring boot
+- Spring Boot
 - Spring MVC
 - Spring Security
-- Spring Data (JPA)
-- MySQL
+- Spring Data JPA
 - Thymeleaf
-- Bootstrap
+- MySQL
 
-## Features
-- **User Authentication and Authorization:** Securely sign up, sign in, and access the app with built-in authentication and authorization.
-- **CRUD Operations:** Perform essential financial tracking actions such as adding, reading, updating, and deleting expenses.
-- **Filtering:** Utilize the filtering feature to efficiently sort and view expenses based on various criteria.
+### DevOps
+- Docker
+- Docker Compose
+- CI/CD (GitHub Actions / Jenkins)
+- Maven
+- Git & GitHub
 
-## Getting Started
-1. **Clone the Repository:**
-`git clone https://github.com/your-username/expenses-tracker.git`
+---
 
-2. **Configure Database:**
-Set up MySQL database and update the application.properties file with your database configuration.
+## 🚀 DevOps Enhancements (My Contribution)
 
-3. **Build and Run:**
-Build the project using your preferred IDE or with Maven:
-`mvn clean install`.
+### 1️⃣ Dockerization
+- Created a **Dockerfile** to containerize the Spring Boot application
+- Uses a clean, reproducible build environment
+- Ensures consistency across dev, test, and prod
 
-4. **Run the application:**
-`java -jar target/expenses-tracker.jar`.
+### 2️⃣ Docker Compose
+- Added `docker-compose.yml` to:
+  - Run Spring Boot app container
+  - Run MySQL database container
+- Simplifies local and server deployments
+- Handles service networking automatically
 
-5. **Access the App:**
-Open your web browser and navigate to `http://localhost:8080`.
+### 3️⃣ CI/CD Pipeline
+- Added CI/CD configuration to:
+  - Checkout source code
+  - Build application using Maven
+  - Build Docker image
+  - Validate container build
+- Enables automated testing & deployment readiness
 
-## ScreenShots
-![Example Image](screenshots/1.png) <br>
-![Example Image](screenshots/2-2.png) <br>
-![Example Image](screenshots/3-3.png) <br>
-![Example Image](screenshots/4-4.png) <br>
-![Example Image](screenshots/5-5.png) <br>
-![Example Image](screenshots/6-6.png) <br>
-![Example Image](screenshots/7.png) <br>
-![Example Image](screenshots/8.png) <br>
+---
 
-## Contributions
-Contributions are welcome! If you find a bug or have suggestions for improvement, feel free to open an issue or create a pull request.
+## 📂 Project Structure
 
-## License
+```
+Expenses-Tracker-WebApp/
+├── src/                     # Application source code
+├── Dockerfile               # Docker image build
+├── docker-compose.yml       # Multi-container orchestration
+├── .github/workflows/       # CI/CD pipeline (if GitHub Actions)
+│   └── ci.yml
+├── pom.xml                  # Maven configuration
+├── application.properties   # App configuration
+└── README.md
+```
 
-This project is licensed under the MIT License.
-RUN below command for creating user and granting them privilege- 
+---
 
-CREATE USER IF NOT EXISTS 'springstudent'@'%' IDENTIFIED BY 'springstudent';
+## ✅ Prerequisites
 
-GRANT ALL PRIVILEGES ON expenses_tracker.* TO 'springstudent'@'%';
-FLUSH PRIVILEGES;
+- Git
+- Docker
+- Docker Compose
+- Java 17+ (optional, for local dev)
+- Maven (optional)
 
+---
+
+## 🐳 Run Using Docker
+
+### Clone Repository
+```bash
+git clone https://github.com/sharmaaakash170/Expenses-Tracker-WebApp.git
+cd Expenses-Tracker-WebApp
+```
+
+### Start Application
+```bash
+docker-compose up --build
+```
+
+### Access Application
+```
+http://localhost:8080
+```
+
+---
+
+## 🐋 Docker Compose Services
+
+- **app** → Spring Boot application
+- **mysql** → MySQL database
+
+Docker Compose handles:
+- Container networking
+- Environment variable injection
+- Service startup order
+
+---
+
+## 🔁 CI/CD Pipeline
+
+The CI/CD pipeline automates:
+- Source checkout
+- Maven build
+- Docker image build
+- Build validation
+
+This ensures:
+- Faster feedback
+- Fewer manual errors
+- Consistent deployments
+
+---
+
+## 🔐 Environment Variables
+
+| Variable | Description |
+|--------|------------|
+| DB_HOST | Database hostname |
+| DB_PORT | Database port |
+| DB_NAME | Database name |
+| DB_USER | Database username |
+| DB_PASSWORD | Database password |
+
+---
+
+## 📦 Build & Deployment Flow
+
+```
+Developer Push
+     ↓
+CI Pipeline Triggered
+     ↓
+Maven Build
+     ↓
+Docker Image Build
+     ↓
+Ready for Deployment
+```
+
+---
+
+## 🧹 Cleanup
+
+```bash
+docker-compose down
+docker system prune
+```
+
+---
+
+## 📌 Best Practices Followed
+
+- Infrastructure as code
+- Containerized deployments
+- Environment-based configs
+- Reproducible builds
+- CI/CD automation
+
+---
+
+## 📜 License & Credits
+
+- Original Application: © Mohamed Osawy  
+- DevOps Enhancements & Fork: © Aakash Sharma  
+
+This project is for **learning, DevOps practice, and portfolio demonstration**.
